@@ -1,1 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TRULINCS & CorrLinks Training Manual</title>
+<link rel="stylesheet" href="css/styles.css">
+<script>
+function searchSite() {
+    let query = document.getElementById("siteSearch").value.toLowerCase();
+    let pages = {
+        "trulincs": "trulincs.html",
+        "corrlinks": "corrlinks.html",
+        "glossary": "glossary.html",
+        "email": "corrlinks.html",
+        "contact": "glossary.html"
+    };
+
+    if (pages[query]) {
+        window.location.href = pages[query];
+    } else {
+        alert("No match found. Try: TRULINCS, CorrLinks, Glossary.");
+    }
+}
+</script>
+</head>
+<body>
+
+<header>
+    <img src="images/logo.png" alt="Logo">
+    <h1>TRULINCS & CorrLinks Training Manual</h1>
+</header>
+
+<nav>
+  <a href="trulincs.html">Using TRULINCS</a>
+  <a href="corrlinks.html">Using CorrLinks</a>
+  <a href="glossary.html">Glossary</a>
+</nav>
+
+<div class="container">
+    <h2>Welcome</h2>
+    <p>This training manual provides guidance on using TRULINCS and CorrLinks systems, including email workflows, contact management, and terminology.</p>
+
+    <h3>Search This Site</h3>
+    <input type="text" id="siteSearch" placeholder="Search (e.g., TRULINCS, CorrLinks, Glossary)" style="width:70%; padding:10px;">
+    <button onclick="searchSite()" style="padding:10px 14px; background:#6A2973; color:white; border:none; border-radius:6px;">Search</button>
+</div>
+
+<footer>&copy; 2025 TRULINCS Training Manual</footer>
+
+</body>
+</html>
 
