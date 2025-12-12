@@ -8,12 +8,8 @@
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Material Symbols for Dark/Light Toggle -->
+<!-- Material Symbols for Toggle and Sidebar -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" />
-
-<!-- Material Symbols for Sidebar -->
-<!-- Purple (light-mode) -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=dashboard,computer,link,dictionary,contact_support&display=swap" />
 
 <style>
   :root {
@@ -42,8 +38,8 @@
   }
   body.light-mode .hero {
     background: #ffffff;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     color: #000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   }
   body.light-mode .card {
     background: #ffffff;
@@ -55,6 +51,12 @@
   body.light-mode .card .btn {
     background: var(--accent-color);
     color: #fff;
+  }
+  body.light-mode #modeToggle {
+    color: var(--accent-color);
+  }
+  body.light-mode .sidebar .icon {
+    color: var(--accent-color);
   }
 
   /* Dark Mode */
@@ -78,17 +80,25 @@
   }
   body.dark-mode .card {
     background: #3a3a3a;
-    color: #ffffff;
+  }
+  body.dark-mode .card-body {
+    color: #f8f9fa; /* card content in dark mode */
   }
   body.dark-mode .card .card-title {
-    color: var(--accent-color);
+    color: #f8f9fa;
   }
   body.dark-mode .card .btn {
     background: var(--accent-color);
     color: #fff;
   }
+  body.dark-mode #modeToggle {
+    color: #f8f9fa; /* toggle icon color */
+  }
+  body.dark-mode .sidebar .icon {
+    color: #f8f9fa; /* sidebar icons in dark mode */
+  }
 
-  /* Sidebar links hover */
+  /* Sidebar hover */
   .sidebar a:hover {
     color: var(--accent-color);
     text-decoration: none;
@@ -109,7 +119,7 @@
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   }
 
-  /* Toggle button (upper-right corner) */
+  /* Toggle button fixed top-right */
   #modeToggle {
     position: fixed;
     top: 20px;
@@ -118,7 +128,6 @@
     background: transparent;
     font-size: 1.8rem;
     cursor: pointer;
-    color: var(--accent-color);
     z-index: 1000;
   }
 
@@ -129,7 +138,7 @@
     margin-right: 8px;
   }
 
-  /* Sidebar icon spacing */
+  /* Sidebar icons */
   .nav-link span.icon {
     vertical-align: middle;
   }
@@ -236,12 +245,12 @@ toggleBtn.addEventListener('click', () => {
   if(body.classList.contains('light-mode')){
     body.classList.remove('light-mode');
     body.classList.add('dark-mode');
-    modeIcon.textContent = 'sunny';
+    modeIcon.textContent = 'sunny'; // sun icon
     navIcons.forEach(icon => icon.textContent = icon.dataset.dark);
   } else {
     body.classList.remove('dark-mode');
     body.classList.add('light-mode');
-    modeIcon.textContent = 'bedtime';
+    modeIcon.textContent = 'bedtime'; // moon icon
     navIcons.forEach(icon => icon.textContent = icon.dataset.light);
   }
 });
