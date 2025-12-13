@@ -26,88 +26,31 @@
     background-color: #f8f9fa;
     color: #000;
   }
-  body.light-mode .sidebar {
-    background: #ffffff;
-    border-right: 1px solid #ddd;
-  }
-  body.light-mode .sidebar a {
-    color: #000;
-  }
-  body.light-mode .sidebar .nav-link.active {
-    color: inherit;
-  }
-  body.light-mode .sidebar .icon {
-    color: var(--accent-color);
-  }
-  body.light-mode .accordion-button {
-    background-color: #ffffff;
-    color: #000;
-  }
-  body.light-mode .accordion-body {
-    color: #000;
-  }
+  body.light-mode .sidebar { background: #ffffff; border-right: 1px solid #ddd; }
+  body.light-mode .sidebar a { color: #000 !important; }
+  body.light-mode .hero { background: #ffffff; color: #000; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+  body.light-mode .accordion-button { color: #000 !important; background-color: #ffffff !important; }
+  body.light-mode .accordion-body { color: #000; background-color: #ffffff; }
 
   /* Dark Mode */
-  body.dark-mode {
-    background-color: #333333;
-    color: #f8f9fa;
-  }
-  body.dark-mode .sidebar {
-    background: #222222;
-    border-right: 1px solid #444;
-  }
-  body.dark-mode .sidebar a {
-    color: #f8f9fa;
-  }
-  body.dark-mode .sidebar .nav-link.active {
-    color: inherit;
-  }
-  body.dark-mode .sidebar .icon {
-    color: #f8f9fa;
-  }
-  body.dark-mode .accordion-button {
-    background-color: #3a3a3a;
-    color: #f8f9fa;
-  }
-  body.dark-mode .accordion-body {
-    color: #f8f9fa;
-  }
+  body.dark-mode { background-color: #333333; color: #ffffff; }
+  body.dark-mode .sidebar { background: #222222; border-right: 1px solid #444; }
+  body.dark-mode .sidebar a { color: #f8f9fa !important; }
+  body.dark-mode .accordion-button { color: #f8f9fa !important; background-color: #3a3a3a !important; }
+  body.dark-mode .accordion-body { color: #f8f9fa; background-color: #3a3a3a; }
 
   /* Sidebar hover */
-  .sidebar a:hover {
-    color: var(--accent-color);
-    text-decoration: none;
-  }
+  .sidebar a:hover { color: var(--accent-color); text-decoration: none; }
 
-  /* Sidebar icons */
-  .nav-link span.icon {
-    vertical-align: middle;
-    margin-right: 8px;
-    display: inline-block;
-  }
-
-  /* Hero */
-  .hero {
-    padding: 40px 20px;
-    text-align: center;
-    border-radius: 8px;
-    margin-bottom: 20px;
-  }
-
-  /* Accordion bullets */
-  .accordion-body ul {
-    padding-left: 1rem;
-  }
-  .accordion-body ul li {
-    list-style-type: disc;
-    list-style-position: inside;
-  }
+  /* Material Symbols */
+  .material-symbols-outlined { font-size: 28px; vertical-align: middle; margin-right: 8px; }
+  .nav-link span.icon { vertical-align: middle; }
 </style>
 </head>
-<body>
+<body class="light-mode">
 
 <div class="container-fluid">
-  <div class="row position-relative">
+  <div class="row">
 
     <!-- Sidebar -->
     <nav class="col-md-3 col-lg-2 sidebar p-3">
@@ -144,137 +87,137 @@
     <!-- Main Content -->
     <main class="col-md-9 col-lg-10 px-4">
       <section class="hero">
-        <h1>Frequently Asked Questions</h1>
-        <p>Click on a question to reveal the answer.</p>
+        <h1>FAQ</h1>
+        <p>Frequently Asked Questions about TRULINCS, CorrLinks, and SmartInmates.</p>
       </section>
 
-      <div class="accordion" id="faqAccordion">
+      <section class="py-4">
+        <div class="accordion" id="faqAccordion">
 
-        <!-- All Q&A items -->
-        <!-- Q1 -->
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="heading1">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
-              I have not received a system-generated message, but the inmate added me to their contact list.
-            </button>
-          </h2>
-          <div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-            <div class="accordion-body">
-              Verify with the inmate that they entered your email address properly:<br><br>
-              Pay special attention to the spelling of addresses and domain names (.com, .net, etc.). Many mail clients have filters to protect users from spam and viruses. Once you have verified the inmate entered your correct email address, you should check your junk mail folder to see if a filter diverted the message.
+          <!-- Q&A 1 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading1">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                I have not received a system-generated message, but the inmate added me to their contact list.
+              </button>
+            </h2>
+            <div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Verify with the inmate that they entered your email address properly:<br>
+                &bull; Pay special attention to the spelling of addresses and domain names (.com, .net, etc.).<br>
+                &bull; Once verified, check your junk mail folder for filtered messages.
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Q2 -->
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="heading2">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
-              The identification code provided in my system-generated email was not accepted by CorrLinks.
-            </button>
-          </h2>
-          <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-            <div class="accordion-body">
-              Check the email date as the invitation to accept an inmate's communication is only valid for 10 days. If the 10 days have expired, the inmate will need to re-add the contact request, thus generating a new invitation to you from CorrLinks. If the invitation to accept an inmate's communication is still active, contact CorrLinks support: <a href="https://www.corrlinks.com/Help.aspx" target="_blank">https://www.corrlinks.com/Help.aspx</a><br><br>
-              You should choose "I don't have an identification code or the one I have doesn't work." from the dropdown options of Please select an issue. You then must enter your email address and click Go.
+          <!-- Q&A 2 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading2">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+                The identification code provided in my system-generated email was not accepted by CorrLinks
+              </button>
+            </h2>
+            <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Check the email date as the invitation is valid for 10 days. If expired, the inmate must re-add the request.<br>
+                Contact CorrLinks support at <a href="https://www.corrlinks.com/Help.aspx" target="_blank">https://www.corrlinks.com/Help.aspx</a>.<br>
+                You should choose "I don't have an identification code or the one I have doesn't work" from the dropdown, enter your email, and click Go.
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Q3 -->
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="heading3">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
-              The inmate is not getting my emails.
-            </button>
-          </h2>
-          <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-            <div class="accordion-body">
-              Please ensure the inmate is at a facility offering TRULINCS and has access to Public Messaging. If this is a contract facility, they will not have access to CorrLinks. Please make sure your CorrLinks box shows messages sent to this inmate; if not, contact CorrLinks support: <a href="https://www.corrlinks.com/Help.aspx" target="_blank">https://www.corrlinks.com/Help.aspx</a><br><br>
-              Also see the list of approved locations to use this system: <a href="https://www.bop.gov/locations/list.jsp" target="_blank">https://www.bop.gov/locations/list.jsp</a>
+          <!-- Q&A 3 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading3">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
+                The inmate is not getting my emails.
+              </button>
+            </h2>
+            <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Ensure the inmate is at a facility offering TRULINCS and has access to Public Messaging. Contract facilities may not have CorrLinks.<br>
+                Verify your CorrLinks box for messages sent. Contact support if necessary:<br>
+                <a href="https://www.corrlinks.com/Help.aspx" target="_blank">https://www.corrlinks.com/Help.aspx</a>.<br>
+                Approved locations: <a href="https://www.bop.gov/locations/list.jsp" target="_blank">https://www.bop.gov/locations/list.jsp</a>.
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Q4 -->
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="heading4">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4">
-              I accidentally blocked or removed the inmate from my contact list, but actually want to correspond.
-            </button>
-          </h2>
-          <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-            <div class="accordion-body">
-              If you accidentally block an inmate from corresponding, they must submit a request to the local institution's Trust Fund Office to request the block be removed. The inmate's request must include your name, physical address, email address, and telephone number. Once the block is removed, you will get a new system-generated message from CorrLinks.
+          <!-- Q&A 4 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading4">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4">
+                I accidentally blocked or removed the inmate from my contact list, but actually want to correspond.
+              </button>
+            </h2>
+            <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                If blocked, the inmate must submit a request to the local institution's Trust Fund Office to remove the block. Once removed, you will receive a new system-generated message from CorrLinks.
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Q5 -->
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="heading5">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5">
-              How long does it take for an inmate to receive a message?
-            </button>
-          </h2>
-          <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-            <div class="accordion-body">
-              <ul>
-                <li>CorrLinks: CONTENT TO BE ADDED LATER</li>
-                <li>SmartInmates: Most messages are delivered instantly. Each correctional facility may set up specific delivery rules depending on a variety of factors which may result in a message being delayed for a period of time prior to delivery.</li>
-              </ul>
+          <!-- Q&A 5 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading5">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5">
+                How long does it take for an inmate to receive a message?
+              </button>
+            </h2>
+            <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                &bull; CorrLinks: CONTENT TO BE ADDED LATER<br>
+                &bull; SmartInmates: Most messages are delivered instantly, but some facilities may delay delivery.
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Q6 -->
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="heading6">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6">
-              How long are messages saved?
-            </button>
-          </h2>
-          <div id="collapse6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-            <div class="accordion-body">
-              SmartInmates: You may keep a message on your account as long as you like. Messages that you no longer want can be deleted any time.
+          <!-- Q&A 6 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading6">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6">
+                How long are messages saved?
+              </button>
+            </h2>
+            <div id="collapse6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                SmartInmates: You may keep a message on your account indefinitely. Messages no longer wanted can be deleted anytime.
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Q7 -->
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="heading7">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7">
-              How many messages can I send/receive each day?
-            </button>
-          </h2>
-          <div id="collapse7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-            <div class="accordion-body">
-              SmartInmates: There is presently no limit to the number of messages that can be sent and received each day. Each message sent will cost one message credit (50 cents) which can be paid by either the sender or the recipient (collect) if the sender has no message credits.
+          <!-- Q&A 7 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading7">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7">
+                How many messages can I send/receive each day?
+              </button>
+            </h2>
+            <div id="collapse7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                SmartInmates: No daily limit. Each message costs one message credit (50 cents) if sender has none.
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Q8 -->
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="heading8">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8">
-              How long of a message can I send in a single message?
-            </button>
-          </h2>
-          <div id="collapse8" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-            <div class="accordion-body">
-              <ul>
-                <li>CorrLinks: Message size is limited to 13,000 characters (approximately two pages worth of text). Additionally, messages can only contain text and no attachments are permitted.</li>
-                <li>SmartInmates: Each message is limited to 30,000 characters including spaces. This works out to about 8-10 pages of typed and printed text.</li>
-              </ul>
-              <br>
-              For further questions, call Customer Care at 1-727-349-1561 or use the contact form: <a href="https://www.smartinmate.com/contact-us.cfm" target="_blank">https://www.smartinmate.com/contact-us.cfm</a>
+          <!-- Q&A 8 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading8">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8">
+                How long of a message can I send in a single message?
+              </button>
+            </h2>
+            <div id="collapse8" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                &bull; CorrLinks: Limited to 13,000 characters (approx. 2 pages). Text only, no attachments.<br>
+                &bull; SmartInmates: Limited to 30,000 characters including spaces (approx. 8-10 pages).<br>
+                For further questions, call Customer Care at 1-727-349-1561 or submit via <a href="https://www.smartinmate.com/contact-us.cfm" target="_blank">contact form</a>.
+              </div>
             </div>
           </div>
-        </div>
 
-      </div> <!-- End Accordion -->
+        </div>
+      </section>
 
     </main>
   </div>
@@ -283,15 +226,13 @@
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Apply Dark/Light Mode based on localStorage -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const savedMode = localStorage.getItem('mode') || 'light';
-  document.body.classList.remove('light-mode','dark-mode');
-  document.body.classList.add(savedMode);
-
-  // Initialize sidebar icons for current mode
+  const body = document.body;
   const navIcons = document.querySelectorAll('.nav-link .icon');
+  const savedMode = localStorage.getItem('mode') || 'light';
+  body.classList.remove('light-mode','dark-mode');
+  body.classList.add(savedMode);
   navIcons.forEach(icon => icon.textContent = savedMode === 'light' ? icon.dataset.light : icon.dataset.dark);
 });
 </script>
