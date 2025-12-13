@@ -52,7 +52,10 @@ body {
   border-radius: 8px;
   margin-bottom: 20px;
   text-align: center;
+  border: 1px solid; /* sets the border, color will come from border-color in light/dark mode */
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
+
 
 /* Cards */
 .card {
@@ -101,9 +104,10 @@ body.light-mode .sidebar a.nav-link {
 body.light-mode .sidebar a.nav-link.active {
   color: var(--varBlack) !important;
 }
-body.light-mode .hero {
+ody.light-mode .hero {
   background-color: var(--varLightGray);
   color: var(--varBlack);
+  border-color: var(--varPurple);
 }
 body.light-mode .card {
   background-color: var(--varLightGray);
@@ -138,6 +142,7 @@ body.dark-mode .sidebar a.nav-link.active {
 body.dark-mode .hero {
   background-color: var(--varSmokyBlack);
   color: var(--varLightGray);
+  border-color: var(--varLightGray);
 }
 body.dark-mode .card {
   background-color: var(--varSmokyBlack);
