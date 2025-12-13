@@ -26,44 +26,124 @@
     background-color: #f8f9fa;
     color: #000;
   }
-  body.light-mode .sidebar { background: #ffffff; border-right: 1px solid #ddd; }
-  body.light-mode .sidebar a { color: #000 !important; }
-  body.light-mode .hero { background: #ffffff; color: #000; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
-  body.light-mode .card { background: #ffffff; color: #000; }
-  body.light-mode .card .card-title { color: var(--accent-color); }
-  body.light-mode .card .btn { background: var(--accent-color); color: #fff; }
-  body.light-mode #modeToggle { color: var(--accent-color); }
-  body.light-mode .sidebar .icon { color: var(--accent-color); }
+  body.light-mode .sidebar {
+    background: #ffffff;
+    border-right: 1px solid #ddd;
+  }
+  body.light-mode .sidebar a {
+    color: #000;
+  }
+ .sidebar .nav-link.active {
+    color: inherit;
+}
+
+  body.light-mode .hero {
+    background: #ffffff;
+    color: #000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  body.light-mode .card {
+    background: #ffffff;
+    color: #000;
+  }
+  body.light-mode .card .card-title {
+    color: var(--accent-color);
+  }
+  body.light-mode .card .btn {
+    background: var(--accent-color);
+    color: #fff;
+  }
+  body.light-mode #modeToggle {
+    color: var(--accent-color);
+  }
+  body.light-mode .sidebar .icon {
+    color: var(--accent-color);
+  }
 
   /* Dark Mode */
-  body.dark-mode { background-color: #333333; color: #ffffff; }
-  body.dark-mode .sidebar { background: #222222; border-right: 1px solid #444; }
-  body.dark-mode .sidebar a { color: #f8f9fa !important; }
-  body.dark-mode .hero { background: #444444; color: #ffffff; }
-  body.dark-mode .card { background: #3a3a3a; }
-  body.dark-mode .card-body { color: #f8f9fa; }
-  body.dark-mode .card .card-title { color: #f8f9fa; }
-  body.dark-mode .card .btn { background: var(--accent-color); color: #fff; }
-  body.dark-mode #modeToggle { color: #f8f9fa; }
-  body.dark-mode .sidebar .icon { color: #f8f9fa; }
+  body.dark-mode {
+    background-color: #333333;
+    color: #ffffff;
+  }
+  body.dark-mode .sidebar {
+    background: #222222;
+    border-right: 1px solid #444;
+  }
+  body.dark-mode .sidebar a {
+    color: #ffffff;
+  }
+  .sidebar .nav-link.active {
+    color: inherit;
+}
+
+  body.dark-mode .hero {
+    background: #444444;
+    color: #ffffff;
+  }
+  body.dark-mode .card {
+    background: #3a3a3a;
+  }
+  body.dark-mode .card-body {
+    color: #f8f9fa; /* card content in dark mode */
+  }
+  body.dark-mode .card .card-title {
+    color: #f8f9fa;
+  }
+  body.dark-mode .card .btn {
+    background: var(--accent-color);
+    color: #fff;
+  }
+  body.dark-mode #modeToggle {
+    color: #f8f9fa; /* toggle icon color */
+  }
+  body.dark-mode .sidebar .icon {
+    color: #f8f9fa; /* sidebar icons in dark mode */
+  }
 
   /* Sidebar hover */
-  .sidebar a:hover { color: var(--accent-color); text-decoration: none; }
+  .sidebar a:hover {
+    color: var(--accent-color);
+    text-decoration: none;
+  }
 
   /* Hero */
-  .hero { padding: 40px 20px; text-align: center; border-radius: 8px; margin-bottom: 20px; }
+  .hero {
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
 
   /* Cards */
-  .card { border: 0; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+  .card {
+    border: 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
 
   /* Toggle button fixed top-right */
-  #modeToggle { position: fixed; top: 20px; right: 20px; border: none; background: transparent; font-size: 1.8rem; cursor: pointer; z-index: 1000; }
+  #modeToggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    border: none;
+    background: transparent;
+    font-size: 1.8rem;
+    cursor: pointer;
+    z-index: 1000;
+  }
 
   /* Material Symbols */
-  .material-symbols-outlined { font-size: 28px; vertical-align: middle; margin-right: 8px; }
+  .material-symbols-outlined {
+    font-size: 28px;
+    vertical-align: middle;
+    margin-right: 8px;
+  }
 
   /* Sidebar icons */
-  .nav-link span.icon { vertical-align: middle; }
+  .nav-link span.icon {
+    vertical-align: middle;
+  }
 </style>
 </head>
 <body class="light-mode">
@@ -75,6 +155,7 @@
 
 <div class="container-fluid">
   <div class="row position-relative">
+
     <!-- Sidebar -->
     <nav class="col-md-3 col-lg-2 sidebar p-3">
       <h4>Contents</h4>
@@ -162,30 +243,22 @@ const body = document.body;
 const modeIcon = document.getElementById('modeIcon');
 const navIcons = document.querySelectorAll('.nav-link .icon');
 
-// Initialize from localStorage
-document.addEventListener('DOMContentLoaded', () => {
-  const savedMode = localStorage.getItem('mode') || 'light';
-  body.classList.remove('light-mode','dark-mode');
-  body.classList.add(savedMode);
-  modeIcon.textContent = savedMode === 'light' ? 'bedtime' : 'sunny';
-  navIcons.forEach(icon => icon.textContent = savedMode === 'light' ? icon.dataset.light : icon.dataset.dark);
-});
-
 toggleBtn.addEventListener('click', () => {
   if(body.classList.contains('light-mode')){
     body.classList.remove('light-mode');
     body.classList.add('dark-mode');
-    localStorage.setItem('mode','dark'); // save preference
-    modeIcon.textContent = 'sunny';
+    modeIcon.textContent = 'sunny'; // sun icon
     navIcons.forEach(icon => icon.textContent = icon.dataset.dark);
   } else {
     body.classList.remove('dark-mode');
     body.classList.add('light-mode');
-    localStorage.setItem('mode','light'); // save preference
-    modeIcon.textContent = 'bedtime';
+    modeIcon.textContent = 'bedtime'; // moon icon
     navIcons.forEach(icon => icon.textContent = icon.dataset.light);
   }
 });
+
+// Initialize nav icons for light mode on load
+navIcons.forEach(icon => icon.textContent = icon.dataset.light);
 </script>
 
 </body>
