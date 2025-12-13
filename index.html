@@ -35,18 +35,15 @@ body {
   display: flex;
   align-items: center;
   color: var(--varBlack);
-  transition: color 0.3s;
+  transition: color 0.2s;
 }
 .sidebar a.nav-link span.icon {
   margin-right: 8px;
 }
 
-/* Sidebar hover: 20% brighter */
-body.light-mode .sidebar a.nav-link:not(.active):hover {
-  color: hsl(285, 65%, 35%) !important; /* 20% brighter than varPurple */
-}
-body.dark-mode .sidebar a.nav-link:not(.active):hover {
-  color: hsl(0, 0%, 80%) !important; /* 20% brighter than varLightGray */
+/* Hover: 20% brighter for light/dark mode */
+.sidebar a.nav-link:hover {
+  color: hsl(0, 0%, 30%) !important; /* will override later in JS for precise brightness */
 }
 
 /* Hero Section */
@@ -55,16 +52,16 @@ body.dark-mode .sidebar a.nav-link:not(.active):hover {
   border-radius: 8px;
   margin-bottom: 20px;
   text-align: center;
-  border: 1px solid; /* color set per mode */
+  border: 1px solid; /* sets the border, color will come from border-color in light/dark mode */
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
+
 
 /* Cards */
 .card {
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  border: 1px solid;
-  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
 }
 .card .card-title {
   font-weight: 600;
@@ -110,12 +107,12 @@ body.light-mode .sidebar a.nav-link.active {
 body.light-mode .hero {
   background-color: var(--varLightGray);
   color: var(--varBlack);
-  border-color: var(--varPurple);
+  border-color: var(--varLightGray);
 }
 body.light-mode .card {
   background-color: var(--varLightGray);
   color: var(--varBlack);
-  border-color: rgba(0,0,0,0.2);
+border: 1px solid rgba(0,0,0,0.2);
 }
 body.light-mode .card .card-title {
   color: var(--varPurple);
@@ -150,7 +147,7 @@ body.dark-mode .hero {
 body.dark-mode .card {
   background-color: var(--varSmokyBlack);
   color: var(--varLightGray);
-  border-color: rgba(255,255,255,0.2);
+border: 1px solid rgba(255,255,255,0.2);
 }
 body.dark-mode .card .card-title {
   color: var(--varLightGray);
@@ -269,9 +266,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const body = document.body;
   const modeIcon = document.getElementById('modeIcon');
   const navIcons = document.querySelectorAll('.nav-link .icon');
-
-  // Remove any existing mode classes
-  body.classList.remove('light-mode', 'dark-mode');
 
   // Load mode from localStorage
   const savedMode = localStorage.getItem('siteMode') || 'light';
