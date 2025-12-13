@@ -8,7 +8,7 @@
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Material Symbols for Toggle and Sidebar -->
+<!-- Material Symbols -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" />
 
 <style>
@@ -20,56 +20,89 @@
   --varSmokyBlack: rgb(48,41,45);
 }
 
-/* Global Body */
+/* Body defaults */
 body {
   font-family: Arial, sans-serif;
   transition: background-color 0.3s, color 0.3s;
 }
 
-/* Sidebar */
-.sidebar {
-  min-height: 100vh;
-  padding: 1rem;
-}
-.sidebar a.nav-link {
-  display: flex;
-  align-items: center;
+/* Light Mode */
+body.light-mode {
+  background-color: var(--varWhite);
   color: var(--varBlack);
-  transition: color 0.2s;
 }
-.sidebar a.nav-link span.icon {
-  margin-right: 8px;
+body.light-mode .sidebar {
+  background: var(--varWhite);
+  border-right: 1px solid #ddd;
 }
+body.light-mode .sidebar a {
+  color: var(--varBlack);
+}
+body.light-mode .sidebar a:hover {
+  color: #7f36b5; /* 20% saturation increase for varBlack in light mode */
+}
+body.light-mode .hero {
+  background: var(--varLightGray);
+  color: var(--varBlack);
+}
+body.light-mode .card {
+  background: var(--varLightGray);
+  color: var(--varBlack);
+}
+body.light-mode .card .card-title { color: var(--varPurple); }
+body.light-mode .card .btn {
+  background: var(--varPurple);
+  color: var(--varLightGray);
+  border: 1px solid var(--varPurple);
+}
+body.light-mode #modeToggle { color: var(--varPurple); }
+body.light-mode .sidebar .icon { color: var(--varPurple); }
 
-/* Hover: 20% brighter for light/dark mode */
-.sidebar a.nav-link:hover {
-  color: hsl(0, 0%, 30%) !important; /* will override later in JS for precise brightness */
+/* Dark Mode */
+body.dark-mode {
+  background-color: var(--varBlack);
+  color: var(--varLightGray);
 }
+body.dark-mode .sidebar {
+  background: var(--varBlack);
+  border-right: 1px solid #444;
+}
+body.dark-mode .sidebar a {
+  color: var(--varLightGray);
+}
+body.dark-mode .sidebar a:hover {
+  color: #cccccc; /* 20% saturation increase for varLightGray in dark mode */
+}
+body.dark-mode .hero {
+  background: var(--varSmokyBlack);
+  color: var(--varLightGray);
+}
+body.dark-mode .card {
+  background: var(--varBlack);
+}
+body.dark-mode .card-body { color: var(--varLightGray); }
+body.dark-mode .card .card-title { color: var(--varLightGray); }
+body.dark-mode .card .btn {
+  background: var(--varPurple);
+  color: var(--varLightGray);
+  border: none;
+}
+body.dark-mode #modeToggle { color: var(--varLightGray); }
+body.dark-mode .sidebar .icon { color: var(--varLightGray); }
 
-/* Hero Section */
-.hero {
-  padding: 40px 20px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  text-align: center;
+/* Sidebar */
+.sidebar a {
+  text-decoration: none;
 }
+.sidebar .nav-link.active { color: inherit; }
+
+/* Hero */
+.hero { padding: 40px 20px; text-align: center; border-radius: 8px; margin-bottom: 20px; }
 
 /* Cards */
-.card {
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  transition: background-color 0.3s, color 0.3s;
-}
-.card .card-title {
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-.card .btn {
-  font-weight: 600;
-  border-radius: 4px;
-}
+.card { border: 0; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
 
-/* Toggle button top-right */
+/* Toggle button fixed top-right */
 #modeToggle {
   position: fixed;
   top: 20px;
@@ -81,103 +114,22 @@ body {
   z-index: 1000;
 }
 
-/* Material Symbols */
-.material-symbols-outlined {
-  font-size: 28px;
-  vertical-align: middle;
-}
-
-/* LIGHT MODE */
-body.light-mode {
-  background-color: var(--varWhite);
-  color: var(--varBlack);
-}
-body.light-mode .sidebar {
-  background-color: var(--varWhite);
-}
-body.light-mode .sidebar a.nav-link {
-  color: var(--varBlack) !important;
-}
-body.light-mode .sidebar a.nav-link.active {
-  color: var(--varBlack) !important;
-}
-body.light-mode .hero {
-  background-color: var(--varLightGray);
-  color: var(--varBlack);
-}
-body.light-mode .card {
-  background-color: var(--varLightGray);
-  color: var(--varBlack);
-}
-body.light-mode .card .card-title {
-  color: var(--varPurple);
-}
-body.light-mode .card .btn {
-  background-color: var(--varPurple);
-  color: var(--varLightGray);
-}
-body.light-mode #modeToggle {
-  color: var(--varPurple);
-}
-
-/* DARK MODE */
-body.dark-mode {
-  background-color: var(--varBlack);
-  color: var(--varLightGray);
-}
-body.dark-mode .sidebar {
-  background-color: var(--varSmokyBlack);
-}
-body.dark-mode .sidebar a.nav-link {
-  color: var(--varLightGray) !important;
-}
-body.dark-mode .sidebar a.nav-link.active {
-  color: var(--varLightGray) !important;
-}
-body.dark-mode .hero {
-  background-color: var(--varSmokyBlack);
-  color: var(--varLightGray);
-}
-body.dark-mode .card {
-  background-color: var(--varSmokyBlack);
-  color: var(--varLightGray);
-}
-body.dark-mode .card .card-title {
-  color: var(--varLightGray);
-}
-body.dark-mode .card .btn {
-  background-color: var(--varPurple);
-  color: var(--varLightGray);
-}
-body.dark-mode #modeToggle {
-  color: var(--varLightGray);
-}
-
-/* Sidebar icons */
-.nav-link span.icon {
-  vertical-align: middle;
-}
-
-/* Remove Bootstrap default blue */
-a,
-a:hover,
-.btn {
-  text-decoration: none !important;
-}
+/* Icons */
+.material-symbols-outlined { font-size: 28px; vertical-align: middle; margin-right: 8px; }
+.nav-link span.icon { vertical-align: middle; }
 </style>
 </head>
 <body>
 
-<!-- Toggle Button -->
+<!-- Toggle button only on Overview -->
 <button id="modeToggle">
   <span class="material-symbols-outlined" id="modeIcon">bedtime</span>
 </button>
 
 <div class="container-fluid">
-  <div class="row">
-
+  <div class="row position-relative">
     <!-- Sidebar -->
-    <nav class="col-md-3 col-lg-2 sidebar">
+    <nav class="col-md-3 col-lg-2 sidebar p-3">
       <h4>Contents</h4>
       <ul class="nav flex-column">
         <li class="nav-item">
@@ -226,6 +178,7 @@ a:hover,
               </div>
             </div>
           </div>
+
           <div class="col-md-4">
             <div class="card h-100 shadow-sm">
               <div class="card-body">
@@ -235,6 +188,7 @@ a:hover,
               </div>
             </div>
           </div>
+
           <div class="col-md-4">
             <div class="card h-100 shadow-sm">
               <div class="card-body">
@@ -246,6 +200,7 @@ a:hover,
           </div>
         </div>
       </section>
+
     </main>
   </div>
 </div>
@@ -254,33 +209,36 @@ a:hover,
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const toggleBtn = document.getElementById('modeToggle');
-  const body = document.body;
-  const modeIcon = document.getElementById('modeIcon');
-  const navIcons = document.querySelectorAll('.nav-link .icon');
+const toggleBtn = document.getElementById('modeToggle');
+const body = document.body;
+const modeIcon = document.getElementById('modeIcon');
+const navIcons = document.querySelectorAll('.nav-link .icon');
 
-  // Load mode from localStorage
-  const savedMode = localStorage.getItem('siteMode') || 'light';
-  body.classList.add(savedMode + '-mode');
-  modeIcon.textContent = savedMode === 'light' ? 'bedtime' : 'sunny';
-  navIcons.forEach(icon => icon.textContent = savedMode === 'light' ? icon.dataset.light : icon.dataset.dark);
+// Load saved mode from localStorage
+const savedMode = localStorage.getItem('mode');
+if(savedMode) {
+  body.classList.add(savedMode);
+  if(savedMode === 'dark-mode') modeIcon.textContent = 'sunny';
+  else modeIcon.textContent = 'bedtime';
+  navIcons.forEach(icon => icon.textContent = (savedMode==='dark-mode') ? icon.dataset.dark : icon.dataset.light);
+} else {
+  body.classList.add('light-mode');
+  navIcons.forEach(icon => icon.textContent = icon.dataset.light);
+}
 
-  toggleBtn.addEventListener('click', () => {
-    if(body.classList.contains('light-mode')) {
-      body.classList.remove('light-mode');
-      body.classList.add('dark-mode');
-      modeIcon.textContent = 'sunny';
-      navIcons.forEach(icon => icon.textContent = icon.dataset.dark);
-      localStorage.setItem('siteMode', 'dark');
-    } else {
-      body.classList.remove('dark-mode');
-      body.classList.add('light-mode');
-      modeIcon.textContent = 'bedtime';
-      navIcons.forEach(icon => icon.textContent = icon.dataset.light);
-      localStorage.setItem('siteMode', 'light');
-    }
-  });
+// Toggle dark/light mode
+toggleBtn.addEventListener('click', () => {
+  if(body.classList.contains('light-mode')) {
+    body.classList.remove('light-mode'); body.classList.add('dark-mode');
+    modeIcon.textContent = 'sunny';
+    navIcons.forEach(icon => icon.textContent = icon.dataset.dark);
+    localStorage.setItem('mode','dark-mode');
+  } else {
+    body.classList.remove('dark-mode'); body.classList.add('light-mode');
+    modeIcon.textContent = 'bedtime';
+    navIcons.forEach(icon => icon.textContent = icon.dataset.light);
+    localStorage.setItem('mode','light-mode');
+  }
 });
 </script>
 
